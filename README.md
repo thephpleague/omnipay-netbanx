@@ -6,7 +6,7 @@
 [![Latest Stable Version](https://poser.pugx.org/omnipay/netbanx/version.png)](https://packagist.org/packages/omnipay/netbanx)
 [![Total Downloads](https://poser.pugx.org/omnipay/netbanx/d/total.png)](https://packagist.org/packages/omnipay/netbanx)
 
-[Omnipay](https://github.com/omnipay/omnipay) is a framework agnostic, multi-gatnetbanx payment
+[Omnipay](https://github.com/omnipay/omnipay) is a framework agnostic, multi-gateway payment
 processing library for PHP 5.3+. This package implements NetBanx support for Omnipay.
 
 ## Installation
