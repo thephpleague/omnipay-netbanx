@@ -99,6 +99,7 @@ class AuthorizeRequest extends AbstractRequest
             $billingDetails->addChild('street', $card->getBillingAddress1());
             $billingDetails->addChild('street2', $card->getBillingAddress2());
             $billingDetails->addChild('city', $card->getBillingCity());
+            $billingDetails->addChild('state', $card->getBillingState());
             $billingDetails->addChild('country', $card->getBillingCountry());
             $billingDetails->addChild('zip', $card->getBillingPostcode());
             $billingDetails->addChild('phone', $card->getBillingPhone());
@@ -111,6 +112,7 @@ class AuthorizeRequest extends AbstractRequest
             $shippingDetails->addChild('street', $card->getShippingAddress1());
             $shippingDetails->addChild('street2', $card->getShippingAddress2());
             $shippingDetails->addChild('city', $card->getShippingCity());
+            $shippingDetails->addChild('state', $card->getShippingState());
             $shippingDetails->addChild('country', $card->getShippingCountry());
             $shippingDetails->addChild('zip', $card->getShippingPostcode());
             $shippingDetails->addChild('phone', $card->getShippingPhone());
