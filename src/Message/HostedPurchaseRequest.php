@@ -96,9 +96,14 @@ class HostedPurchaseRequest extends HostedAbstractRequest
 
     public function sendData($data)
     {
-        $httpResponse = $this->sendRequest('/orders', $data, 'POST');
+        $httpResponse = $this->sendRequest($this->getEndpointAction(), $data, 'POST');
         $responseData = json_decode($httpResponse->getBody(true), true);
 
         return $this->response = new HostedPurchaseResponse($this, $responseData);
+    }
+
+    public function getEndpointAction()
+    {
+        return '/orders';
     }
 }
