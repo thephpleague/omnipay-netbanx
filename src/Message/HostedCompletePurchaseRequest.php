@@ -4,7 +4,6 @@ namespace Omnipay\NetBanx\Message;
 
 class HostedCompletePurchaseRequest extends HostedAbstractRequest
 {
-
     public function getData()
     {
         $this->validate('transactionReference');

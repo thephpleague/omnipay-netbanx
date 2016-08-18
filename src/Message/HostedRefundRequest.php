@@ -4,7 +4,6 @@ namespace Omnipay\NetBanx\Message;
 
 class HostedRefundRequest extends HostedAbstractRequest
 {
-
     public function getData()
     {
         $this->validate('amount', 'transactionReference', 'transactionId');
@@ -27,6 +26,6 @@ class HostedRefundRequest extends HostedAbstractRequest
 
     public function getEndpointAction()
     {
-        return "/orders/".$this->getTransactionReference()."/refund";
+        return '/orders/'.$this->getTransactionReference().'/refund';
     }
 }

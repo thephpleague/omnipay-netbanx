@@ -6,7 +6,7 @@ abstract class HostedAbstractResponse extends \Omnipay\Common\Message\AbstractRe
 {
     public function getRedirectMethod()
     {
-        return "GET";
+        return 'GET';
     }
 
     public function isSuccessful()

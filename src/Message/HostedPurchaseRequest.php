@@ -4,7 +4,6 @@ namespace Omnipay\NetBanx\Message;
 
 class HostedPurchaseRequest extends HostedAbstractRequest
 {
-
     public function getData()
     {
         $this->validate('amount', 'returnUrl', 'cancelUrl');
@@ -12,17 +11,17 @@ class HostedPurchaseRequest extends HostedAbstractRequest
         // https://developer.optimalpayments.com/en/documentation/hosted-payment-api/redirect-object/
         $returnUrl = array();
         $returnUrl['rel'] = 'on_success';
-        $returnUrl['returnKeys'] = array("id");
+        $returnUrl['returnKeys'] = array('id');
         $returnUrl['uri'] = $this->getReturnUrl();
 
         $errorUrl = array();
         $errorUrl['rel'] = 'on_error';
-        $errorUrl['returnKeys'] = array("id", "transaction.errorMessage");
+        $errorUrl['returnKeys'] = array('id', 'transaction.errorMessage');
         $errorUrl['uri'] = $this->getReturnUrl();
 
         $declineUrl = array();
         $declineUrl['rel'] = 'on_decline';
-        $declineUrl['returnKeys'] = array("id", "transaction.errorMessage");
+        $declineUrl['returnKeys'] = array('id', 'transaction.errorMessage');
         $declineUrl['uri'] = $this->getReturnUrl();
 
         $cancelUrl = array();
