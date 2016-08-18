@@ -11,9 +11,10 @@ abstract class HostedAbstractResponse extends \Omnipay\Common\Message\AbstractRe
 
     public function isSuccessful()
     {
-        $successfulTransaction = (isset($this->data['transaction']) && isset($this->data['transaction']['status']) && $this->data['transaction']['status'] == 'success');
+        $successful = (isset($this->data['transaction']['status'])
+            && $this->data['transaction']['status'] == 'success');
 
-        return !$this->isRedirect() && !isset($this->data['error']) && $successfulTransaction;
+        return !$this->isRedirect() && !isset($this->data['error']) && $successful;
     }
 
     public function getMessage()

@@ -52,8 +52,8 @@ abstract class HostedAbstractRequest extends \Omnipay\Common\Message\AbstractReq
             'Content-Type'  => 'application/json'
         );
 
-        // For some reason the native json encoder built into Guzzle 3 is not encoding the nested data correctly, breaking the http request.
-        // We need to do it manually.
+        // For some reason the native json encoder built into Guzzle 3 is not encoding the nested data correctly,
+        // breaking the http request. We need to do it manually.
         $data = json_encode($data);
 
         // Return the response we get back

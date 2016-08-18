@@ -6,7 +6,8 @@ class HostedRefundResponse extends HostedAbstractResponse
 {
     public function isSuccessful()
     {
-        $successfulTransaction = (isset($this->data['confirmationNumber']) && isset($this->data['authType']) && $this->data['authType'] == 'refund');
+        $successfulTransaction = (isset($this->data['confirmationNumber'])
+            && isset($this->data['authType']) && $this->data['authType'] == 'refund');
 
         return !isset($this->data['error']) && $successfulTransaction;
     }
