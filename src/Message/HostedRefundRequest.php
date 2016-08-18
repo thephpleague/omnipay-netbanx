@@ -5,28 +5,28 @@ namespace Omnipay\NetBanx\Message;
 class HostedRefundRequest extends HostedAbstractRequest
 {
 
-	public function getData()
-	{
-		$this->validate('amount', 'transactionReference', 'transactionId');
+    public function getData()
+    {
+        $this->validate('amount', 'transactionReference', 'transactionId');
 
-		$data = parent::getBaseData();
+        $data = parent::getBaseData();
 
-		$data['amount'] = $this->getAmountInteger();
-		$data['merchantRefNum'] = $this->getTransactionId();
+        $data['amount'] = $this->getAmountInteger();
+        $data['merchantRefNum'] = $this->getTransactionId();
 
-		return $data;
-	}
+        return $data;
+    }
 
-	public function sendData($data)
-	{
-		$httpResponse = $this->sendRequest($this->getEndpointAction(), null, 'POST');
-		$responseData = json_decode($httpResponse->getBody(true), true);
+    public function sendData($data)
+    {
+        $httpResponse = $this->sendRequest($this->getEndpointAction(), null, 'POST');
+        $responseData = json_decode($httpResponse->getBody(true), true);
 
-		return $this->response = new HostedRefundResponse($this, $responseData);
-	}
+        return $this->response = new HostedRefundResponse($this, $responseData);
+    }
 
-	public function getEndpointAction()
-	{
-		return "/orders/".$this->getTransactionReference()."/refund";
-	}
+    public function getEndpointAction()
+    {
+        return "/orders/".$this->getTransactionReference()."/refund";
+    }
 }

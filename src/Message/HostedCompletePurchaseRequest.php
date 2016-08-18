@@ -5,27 +5,27 @@ namespace Omnipay\NetBanx\Message;
 class HostedCompletePurchaseRequest extends HostedAbstractRequest
 {
 
-	public function getData()
-	{
-		$this->validate('transactionReference');
+    public function getData()
+    {
+        $this->validate('transactionReference');
 
-		$data = parent::getBaseData();
+        $data = parent::getBaseData();
 
-		$data['transactionReference'] = $this->getTransactionReference();
+        $data['transactionReference'] = $this->getTransactionReference();
 
-		return $data;
-	}
+        return $data;
+    }
 
-	public function sendData($data)
-	{
-		$httpResponse = $this->sendRequest($this->getEndpointAction(), null, 'GET');
-		$responseData = json_decode($httpResponse->getBody(true), true);
+    public function sendData($data)
+    {
+        $httpResponse = $this->sendRequest($this->getEndpointAction(), null, 'GET');
+        $responseData = json_decode($httpResponse->getBody(true), true);
 
-		return $this->response = new HostedPurchaseResponse($this, $responseData);
-	}
+        return $this->response = new HostedPurchaseResponse($this, $responseData);
+    }
 
-	public function getEndpointAction()
-	{
-		return "/orders/".$this->getTransactionReference();
-	}
+    public function getEndpointAction()
+    {
+        return "/orders/".$this->getTransactionReference();
+    }
 }

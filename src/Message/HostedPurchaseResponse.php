@@ -6,42 +6,42 @@ use Omnipay\Common\Message\RedirectResponseInterface;
 
 class HostedPurchaseResponse extends HostedAbstractResponse implements RedirectResponseInterface
 {
-	public function isRedirect()
-	{
-		$hasHostedLink = false;
-		if (isset($this->data['link']))
-		{
-			foreach ($this->data['link'] as $link)
-			{
-				if (isset($link['rel']) && $link['rel'] == 'hosted_payment')
-				{
-					$hasHostedLink = true;
-				}
-			}
-		}
+    public function isRedirect()
+    {
+        $hasHostedLink = false;
+        if (isset($this->data['link']))
+        {
+            foreach ($this->data['link'] as $link)
+            {
+                if (isset($link['rel']) && $link['rel'] == 'hosted_payment')
+                {
+                    $hasHostedLink = true;
+                }
+            }
+        }
 
-		$hasTransaction = isset($this->data['transaction']);
+        $hasTransaction = isset($this->data['transaction']);
 
-		// No transaction should exist yet if this is a new hosted netbanx order
-		return $hasHostedLink && !$hasTransaction;
-	}
+        // No transaction should exist yet if this is a new hosted netbanx order
+        return $hasHostedLink && !$hasTransaction;
+    }
 
-	public function getRedirectUrl()
-	{
-		if (isset($this->data['link']))
-		{
-			foreach ($this->data['link'] as $link)
-			{
-				if (isset($link['rel']) && $link['rel'] == 'hosted_payment')
-				{
-					return $link['uri'];
-				}
-			}
-		}
-	}
+    public function getRedirectUrl()
+    {
+        if (isset($this->data['link']))
+        {
+            foreach ($this->data['link'] as $link)
+            {
+                if (isset($link['rel']) && $link['rel'] == 'hosted_payment')
+                {
+                    return $link['uri'];
+                }
+            }
+        }
+    }
 
-	public function getRedirectData()
-	{
-		return null;
-	}
+    public function getRedirectData()
+    {
+        return null;
+    }
 }
