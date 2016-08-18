@@ -34,8 +34,7 @@ class HostedPurchaseRequest extends HostedAbstractRequest
         $emailNotEditable = array('key' => 'emailNotEditable', 'value' => true);
 
         $card = $this->getCard();
-        if ($card)
-        {
+        if ($card) {
             $billingDetails = [];
             $billingDetails['street'] = (string)$card->getBillingAddress1();
             $billingDetails['street2'] = $card->getBillingAddress2();
@@ -69,15 +68,13 @@ class HostedPurchaseRequest extends HostedAbstractRequest
 
         // Country and Zip required fields
         // https://developer.optimalpayments.com/en/documentation/hosted-payment-api/billingdetails-object/
-        if (isset($billingDetails) && $billingDetails['country'] && $billingDetails['zip'])
-        {
+        if (isset($billingDetails) && $billingDetails['country'] && $billingDetails['zip']) {
             $data['billingDetails'] = $billingDetails;
         }
 
         // Country and Zip required fields
         // https://developer.optimalpayments.com/en/documentation/hosted-payment-api/shippingdetails-object/
-        if (isset($shippingDetails) && $shippingDetails['country'] && $shippingDetails['zip'])
-        {
+        if (isset($shippingDetails) && $shippingDetails['country'] && $shippingDetails['zip']) {
             $data['shippingDetails'] = $shippingDetails;
         }
 

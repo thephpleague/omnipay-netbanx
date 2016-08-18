@@ -34,10 +34,8 @@ abstract class HostedAbstractRequest extends \Omnipay\Common\Message\AbstractReq
         // don't throw exceptions for 4xx errors, need the data for error messages
         $this->httpClient->getEventDispatcher()->addListener(
             'request.error',
-            function ($event)
-            {
-                if ($event['response']->isClientError())
-                {
+            function ($event) {
+                if ($event['response']->isClientError()) {
                     $event->stopPropagation();
                 }
             }

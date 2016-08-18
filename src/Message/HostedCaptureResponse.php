@@ -20,13 +20,11 @@ class HostedCaptureResponse extends HostedAbstractResponse
     {
         $message = null;
 
-        if (isset($this->data['confirmationNumber']))
-        {
+        if (isset($this->data['confirmationNumber'])) {
             $message = $this->data['confirmationNumber'];
         }
 
-        if (isset($this->data['error']['message']))
-        {
+        if (isset($this->data['error']['message'])) {
             $message = $this->data['error']['message'];
         }
 

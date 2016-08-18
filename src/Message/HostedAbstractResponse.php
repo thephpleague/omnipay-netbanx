@@ -20,18 +20,15 @@ abstract class HostedAbstractResponse extends \Omnipay\Common\Message\AbstractRe
     {
         $message = null;
 
-        if (isset($this->data['transaction']['confirmationNumber']))
-        {
+        if (isset($this->data['transaction']['confirmationNumber'])) {
             $message = $this->data['transaction']['confirmationNumber'];
         }
 
-        if (isset($this->data['transaction']['errorMessage']))
-        {
+        if (isset($this->data['transaction']['errorMessage'])) {
             $message = $this->data['transaction']['errorMessage'];
         }
 
-        if (isset($this->data['error']['message']))
-        {
+        if (isset($this->data['error']['message'])) {
             $message = $this->data['error']['message'];
         }
 
@@ -42,13 +39,11 @@ abstract class HostedAbstractResponse extends \Omnipay\Common\Message\AbstractRe
     {
         $code = null;
 
-        if (isset($this->data['transaction']['errorCode']))
-        {
+        if (isset($this->data['transaction']['errorCode'])) {
             $code = $this->data['transaction']['errorCode'];
         }
 
-        if (isset($this->data['error']['code']))
-        {
+        if (isset($this->data['error']['code'])) {
             $code = $this->data['error']['code'];
         }
 

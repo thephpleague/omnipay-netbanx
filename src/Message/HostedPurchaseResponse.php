@@ -9,12 +9,9 @@ class HostedPurchaseResponse extends HostedAbstractResponse implements RedirectR
     public function isRedirect()
     {
         $hasHostedLink = false;
-        if (isset($this->data['link']))
-        {
-            foreach ($this->data['link'] as $link)
-            {
-                if (isset($link['rel']) && $link['rel'] == 'hosted_payment')
-                {
+        if (isset($this->data['link'])) {
+            foreach ($this->data['link'] as $link) {
+                if (isset($link['rel']) && $link['rel'] == 'hosted_payment') {
                     $hasHostedLink = true;
                 }
             }
@@ -28,12 +25,9 @@ class HostedPurchaseResponse extends HostedAbstractResponse implements RedirectR
 
     public function getRedirectUrl()
     {
-        if (isset($this->data['link']))
-        {
-            foreach ($this->data['link'] as $link)
-            {
-                if (isset($link['rel']) && $link['rel'] == 'hosted_payment')
-                {
+        if (isset($this->data['link'])) {
+            foreach ($this->data['link'] as $link) {
+                if (isset($link['rel']) && $link['rel'] == 'hosted_payment') {
                     return $link['uri'];
                 }
             }

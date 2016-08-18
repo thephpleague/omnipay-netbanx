@@ -71,7 +71,8 @@ class HostedGatewayTest extends GatewayTestCase
         $this->assertSame('284BRTAQFS63EOA1LD', $response->getTransactionReference());
         $this->assertNull($response->getCode());
         $this->assertNull($response->getMessage());
-        $this->assertSame("https://pay.test.netbanx.com/hosted/v1/payment/53616c7465645f5f620e8e8fed4517d964208355a0b5dfb087d38e77f05aa00d9dbb3e7f9f379cb8", $response->getRedirectUrl());
+        $this->assertSame("https://pay.test.netbanx.com/hosted/v1/payment/53616c7465645f5f620e8e8fed4517d964208355a0b5dfb087d38e77f05aa00d9dbb3e7f9f379cb8",
+            $response->getRedirectUrl());
     }
 
     public function testPurchaseFailure()
@@ -124,7 +125,8 @@ class HostedGatewayTest extends GatewayTestCase
         $this->assertSame('284BRTAQFS63EOA1LD', $response->getTransactionReference());
         $this->assertNull($response->getCode());
         $this->assertNull($response->getMessage());
-        $this->assertSame("https://pay.test.netbanx.com/hosted/v1/payment/53616c7465645f5f620e8e8fed4517d964208355a0b5dfb087d38e77f05aa00d9dbb3e7f9f379cb8", $response->getRedirectUrl());
+        $this->assertSame("https://pay.test.netbanx.com/hosted/v1/payment/53616c7465645f5f620e8e8fed4517d964208355a0b5dfb087d38e77f05aa00d9dbb3e7f9f379cb8",
+            $response->getRedirectUrl());
     }
 
     public function testAuthorizeFailure()
