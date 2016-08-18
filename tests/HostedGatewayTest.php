@@ -2,9 +2,9 @@
 
 namespace Omnipay\NetBanx;
 
+use Omnipay\Common\CreditCard;
 use Omnipay\NetBanx\Message\HostedPurchaseResponse;
 use Omnipay\Tests\GatewayTestCase;
-use Omnipay\Common\CreditCard;
 
 class HostedGatewayTest extends GatewayTestCase
 {
@@ -37,10 +37,10 @@ class HostedGatewayTest extends GatewayTestCase
 		$card->setEmail('test@example.com');
 
 		$this->purchaseOptions = array(
-			'amount' => '95.63',
+			'amount'    => '95.63',
 			'returnUrl' => 'https://www.example.com/return',
 			'cancelUrl' => 'https://www.example.com/cancel',
-			'currency' => 'GBP'
+			'currency'  => 'GBP'
 		);
 
 		$this->completePurchaseOptions = array(
@@ -94,7 +94,6 @@ class HostedGatewayTest extends GatewayTestCase
 		$this->assertFalse($response->isRedirect());
 		$this->assertSame('400', $response->getCode());
 		$this->assertSame('Duplicate merchant reference', $response->getMessage());
-
 	}
 
 	public function testAuthorizeSuccess()
@@ -109,8 +108,8 @@ class HostedGatewayTest extends GatewayTestCase
 		$response = $request->send();
 
 		$extendedOptions = array(
-			array('key' => 'emailNotEditable','value' => true),
-			array('key' => 'authType','value'=>'auth')
+			array('key' => 'emailNotEditable', 'value' => true),
+			array('key' => 'authType', 'value' => 'auth')
 		);
 
 		// Test Request
@@ -171,7 +170,7 @@ class HostedGatewayTest extends GatewayTestCase
 		$this->assertFalse($response->isPending());
 		$this->assertSame('284BRTAQFS63EOA1LD', $response->getTransactionReference());
 		$this->assertNull($response->getCode());
-		$this->assertSame('361928800',$response->getMessage());
+		$this->assertSame('361928800', $response->getMessage());
 	}
 
 	public function testCompleteAuthorizeSuccess()
@@ -196,6 +195,6 @@ class HostedGatewayTest extends GatewayTestCase
 		$this->assertFalse($response->isPending());
 		$this->assertSame('284BRTAQFS63EOA1LD', $response->getTransactionReference());
 		$this->assertNull($response->getCode());
-		$this->assertSame('361928800',$response->getMessage());
+		$this->assertSame('361928800', $response->getMessage());
 	}
 }

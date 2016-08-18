@@ -16,16 +16,16 @@ class HostedCompletePurchaseRequest extends HostedAbstractRequest
 		return $data;
 	}
 
-	public function getEndpointAction()
-	{
-		return "/orders/".$this->getTransactionReference();
-	}
-
 	public function sendData($data)
 	{
 		$httpResponse = $this->sendRequest($this->getEndpointAction(), null, 'GET');
-		$responseData = json_decode($httpResponse->getBody(true),true);
+		$responseData = json_decode($httpResponse->getBody(true), true);
 
 		return $this->response = new HostedPurchaseResponse($this, $responseData);
+	}
+
+	public function getEndpointAction()
+	{
+		return "/orders/".$this->getTransactionReference();
 	}
 }

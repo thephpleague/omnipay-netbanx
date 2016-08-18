@@ -7,7 +7,7 @@ class HostedCaptureRequest extends HostedAbstractRequest
 
 	public function getData()
 	{
-		$this->validate('amount','transactionReference','transactionId');
+		$this->validate('amount', 'transactionReference', 'transactionId');
 
 		$data = parent::getBaseData();
 
@@ -17,16 +17,16 @@ class HostedCaptureRequest extends HostedAbstractRequest
 		return $data;
 	}
 
-	public function getEndpointAction()
-	{
-		return "/orders/".$this->getTransactionReference()."/settlement";
-	}
-
 	public function sendData($data)
 	{
 		$httpResponse = $this->sendRequest($this->getEndpointAction(), null, 'POST');
-		$responseData = json_decode($httpResponse->getBody(true),true);
+		$responseData = json_decode($httpResponse->getBody(true), true);
 
 		return $this->response = new HostedCaptureResponse($this, $responseData);
+	}
+
+	public function getEndpointAction()
+	{
+		return "/orders/".$this->getTransactionReference()."/settlement";
 	}
 }

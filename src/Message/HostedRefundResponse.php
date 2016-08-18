@@ -27,7 +27,7 @@ class HostedRefundResponse extends HostedAbstractResponse
 
 		return $message;
 	}
-	
+
 	public function getRedirectData()
 	{
 		return null;

@@ -4,16 +4,16 @@ namespace Omnipay\NetBanx\Message;
 
 class HostedCaptureResponse extends HostedAbstractResponse
 {
-	public function isRedirect()
-	{
-		return false;
-	}
-
 	public function isSuccessful()
 	{
 		$successfulTransaction = (isset($this->data['authType']) && $this->data['authType'] == 'settlement');
 
 		return !$this->isRedirect() && !isset($this->data['error']) && $successfulTransaction;
+	}
+
+	public function isRedirect()
+	{
+		return false;
 	}
 
 	public function getMessage()
