@@ -35,7 +35,7 @@ class HostedPurchaseRequest extends HostedAbstractRequest
 
         $card = $this->getCard();
         if ($card) {
-            $billingDetails = [];
+            $billingDetails = array();
             $billingDetails['street'] = (string)$card->getBillingAddress1();
             $billingDetails['street2'] = $card->getBillingAddress2();
             $billingDetails['city'] = (string)$card->getBillingCity();
@@ -47,7 +47,7 @@ class HostedPurchaseRequest extends HostedAbstractRequest
             // Netbanx does not allow blank strings in address.
             $billingDetails = array_filter($billingDetails);
 
-            $shippingDetails = [];
+            $shippingDetails = array();
             $shippingDetails['recipientName'] = (string)$card->getShippingName();
             $shippingDetails['street'] = (string)$card->getShippingAddress1();
             $shippingDetails['street2'] = (string)$card->getShippingAddress2();
