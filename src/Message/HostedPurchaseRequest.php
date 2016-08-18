@@ -26,7 +26,7 @@ class HostedPurchaseRequest extends HostedAbstractRequest
 
         $cancelUrl = array();
         $cancelUrl['rel'] = 'cancel_url';
-        $declineUrl['returnKeys'] = array();
+        $cancelUrl['returnKeys'] = array();
         $cancelUrl['uri'] = $this->getCancelUrl();
 
         $email = '';
