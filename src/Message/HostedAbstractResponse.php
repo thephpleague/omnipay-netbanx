@@ -54,5 +54,4 @@ abstract class HostedAbstractResponse extends \Omnipay\Common\Message\AbstractRe
     {
         return isset($this->data['id']) ? $this->data['id'] : null;
     }
-
 }
