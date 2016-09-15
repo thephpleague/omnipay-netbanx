@@ -4,6 +4,9 @@ namespace Omnipay\NetBanx\Message;
 
 class HostedCompletePurchaseRequest extends HostedAbstractRequest
 {
+    /**
+     * @return array
+     */
     public function getData()
     {
         $this->validate('transactionReference');
@@ -15,6 +18,11 @@ class HostedCompletePurchaseRequest extends HostedAbstractRequest
         return $data;
     }
 
+    /**
+     * @param mixed $data
+     *
+     * @return HostedPurchaseResponse
+     */
     public function sendData($data)
     {
         $httpResponse = $this->sendRequest($this->getEndpointAction(), null, 'GET');
@@ -23,6 +31,9 @@ class HostedCompletePurchaseRequest extends HostedAbstractRequest
         return $this->response = new HostedPurchaseResponse($this, $responseData);
     }
 
+    /**
+     * @return string
+     */
     public function getEndpointAction()
     {
         return "/orders/".$this->getTransactionReference();

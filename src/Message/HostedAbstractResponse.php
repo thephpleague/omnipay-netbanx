@@ -4,11 +4,17 @@ namespace Omnipay\NetBanx\Message;
 
 abstract class HostedAbstractResponse extends \Omnipay\Common\Message\AbstractResponse
 {
+    /**
+     * @return string
+     */
     public function getRedirectMethod()
     {
         return 'GET';
     }
 
+    /**
+     * @return bool
+     */
     public function isSuccessful()
     {
         $successful = (isset($this->data['transaction']['status'])
@@ -17,6 +23,9 @@ abstract class HostedAbstractResponse extends \Omnipay\Common\Message\AbstractRe
         return !$this->isRedirect() && !isset($this->data['error']) && $successful;
     }
 
+    /**
+     * @return string|null
+     */
     public function getMessage()
     {
         $message = null;
@@ -36,6 +45,9 @@ abstract class HostedAbstractResponse extends \Omnipay\Common\Message\AbstractRe
         return $message;
     }
 
+    /**
+     * @return string|null
+     */
     public function getCode()
     {
         $code = null;
@@ -51,6 +63,9 @@ abstract class HostedAbstractResponse extends \Omnipay\Common\Message\AbstractRe
         return $code;
     }
 
+    /**
+     * @return string|null
+     */
     public function getTransactionReference()
     {
         return isset($this->data['id']) ? $this->data['id'] : null;

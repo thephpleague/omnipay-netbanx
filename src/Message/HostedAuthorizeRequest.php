@@ -5,6 +5,9 @@ namespace Omnipay\NetBanx\Message;
 class HostedAuthorizeRequest extends HostedPurchaseRequest
 {
 
+    /**
+     * @return array|mixed
+     */
     public function getData()
     {
         $data = parent::getData();

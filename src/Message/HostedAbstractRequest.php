@@ -9,26 +9,49 @@ abstract class HostedAbstractRequest extends \Omnipay\Common\Message\AbstractReq
     protected $liveEndpoint = 'https://api.netbanx.com/hosted/v1';
     protected $testEndpoint = 'https://api.test.netbanx.com/hosted/v1';
 
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Common\Message\AbstractRequest
+     */
     public function setKeyId($value)
     {
         return $this->setParameter('keyId', $value);
     }
 
+    /**
+     * @return mixed
+     */
     public function getKeyId()
     {
         return $this->getParameter('keyId');
     }
 
+    /**
+     * @param $value
+     *
+     * @return \Omnipay\Common\Message\AbstractRequest
+     */
     public function setKeyPassword($value)
     {
         return $this->setParameter('keyPassword', $value);
     }
 
+    /**
+     * @return mixed
+     */
     public function getKeyPassword()
     {
         return $this->getParameter('keyPassword');
     }
 
+    /**
+     * @param        $action
+     * @param null   $data
+     * @param string $method
+     *
+     * @return \Guzzle\Http\Message\Response
+     */
     public function sendRequest($action, $data = null, $method = RequestInterface::POST)
     {
         // don't throw exceptions for 4xx errors, need the data for error messages
@@ -60,11 +83,17 @@ abstract class HostedAbstractRequest extends \Omnipay\Common\Message\AbstractReq
         return $this->httpClient->createRequest($method, $url, $headers, $data)->send();
     }
 
+    /**
+     * @return string
+     */
     public function getEndpoint()
     {
         return $this->getTestMode() ? $this->testEndpoint : $this->liveEndpoint;
     }
 
+    /**
+     * @return array
+     */
     protected function getBaseData()
     {
         $data = array();
