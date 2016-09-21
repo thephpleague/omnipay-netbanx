@@ -4,6 +4,9 @@ namespace Omnipay\NetBanx\Message;
 
 class HostedCaptureRequest extends HostedAbstractRequest
 {
+    /**
+     * @return array
+     */
     public function getData()
     {
         $this->validate('amount', 'transactionReference', 'transactionId');
@@ -16,6 +19,11 @@ class HostedCaptureRequest extends HostedAbstractRequest
         return $data;
     }
 
+    /**
+     * @param mixed $data
+     *
+     * @return HostedCaptureResponse
+     */
     public function sendData($data)
     {
         $httpResponse = $this->sendRequest($this->getEndpointAction(), null, 'POST');

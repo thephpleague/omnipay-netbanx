@@ -4,6 +4,9 @@ namespace Omnipay\NetBanx\Message;
 
 class HostedRefundResponse extends HostedAbstractResponse
 {
+    /**
+     * @return bool
+     */
     public function isSuccessful()
     {
         $successfulTransaction = (isset($this->data['confirmationNumber'])
@@ -12,6 +15,9 @@ class HostedRefundResponse extends HostedAbstractResponse
         return !isset($this->data['error']) && $successfulTransaction;
     }
 
+    /**
+     * @return string|null
+     */
     public function getMessage()
     {
         $message = null;
@@ -27,6 +33,9 @@ class HostedRefundResponse extends HostedAbstractResponse
         return $message;
     }
 
+    /**
+     * @return null
+     */
     public function getRedirectData()
     {
         return null;

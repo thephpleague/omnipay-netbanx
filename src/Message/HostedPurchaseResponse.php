@@ -6,6 +6,9 @@ use Omnipay\Common\Message\RedirectResponseInterface;
 
 class HostedPurchaseResponse extends HostedAbstractResponse implements RedirectResponseInterface
 {
+    /**
+     * @return bool
+     */
     public function isRedirect()
     {
         $hasHostedLink = false;
@@ -23,6 +26,9 @@ class HostedPurchaseResponse extends HostedAbstractResponse implements RedirectR
         return $hasHostedLink && !$hasTransaction;
     }
 
+    /**
+     * @return string|null
+     */
     public function getRedirectUrl()
     {
         if (isset($this->data['link'])) {
@@ -34,6 +40,9 @@ class HostedPurchaseResponse extends HostedAbstractResponse implements RedirectR
         }
     }
 
+    /**
+     * @return null
+     */
     public function getRedirectData()
     {
         return null;
